@@ -53,16 +53,7 @@ def load_onion_model():
     model = model.to(device)
     model.eval()
     
-    # Inisialisasi Grad-CAM++ untuk DenseNet (target layer menggunakan denseblock terakhir)
-    from pytorch_grad_cam import GradCAMPlusPlus
-    target_layers = [model.features.denseblock4]
-    cam = GradCAMPlusPlus(model=model, target_layers=target_layers)
-    return model, cam
-
-try:
-    model, cam = load_onion_model()
-except Exception as e:
-    st.error(f"Gagal memuat model: {e}")
+    
 
 # ======================================================================
 # PREPROCESSING & TRANSFORM
