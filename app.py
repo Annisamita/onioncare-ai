@@ -20,7 +20,7 @@ st.set_page_config(
 
 # ID Google Drive dari file .pth kamu
 FILE_ID = "1vExdfcOpo8vLeb0QD4gs6u7KZf2kWdEm"
-WEIGHTS_PATH = "mobilenet_v2_bawang.pth"  # Nama file bisa tetap atau diubah sesuai keinginan
+WEIGHTS_PATH = "densenet121_bawang.pth"  # Diperbarui agar sesuai dengan arsitektur DenseNet121
 
 class_names = ['Bercak_Ungu', 'Busuk_Daun', 'Fusarium', 'Sehat']
 scientific_names = {
