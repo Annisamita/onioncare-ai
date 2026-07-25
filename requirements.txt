@@ -1,6 +1,7 @@
 streamlit
 torch
 torchvision
+gdown
 grad-cam
 opencv-python
 pillow
