@@ -75,4 +75,8 @@ torch
 torchvision
 gdown
 grad-cam
-
+opencv-python
+Pillow
+numpy
+streamlit
+streamlit-image-comparison
