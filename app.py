@@ -20,7 +20,7 @@ st.set_page_config(
 
 # ID Google Drive dari file .pth kamu
 FILE_ID = "1vExdfcOpo8vLeb0QD4gs6u7KZf2kWdEm"
-WEIGHTS_PATH = "mobilenet_v2_bawang.pth"
+WEIGHTS_PATH = "mobilenet_v2_bawang.pth"  # Nama file bisa tetap atau diubah sesuai keinginan
 
 class_names = ['Bercak_Ungu', 'Busuk_Daun', 'Fusarium', 'Sehat']
 scientific_names = {
@@ -43,9 +43,9 @@ def load_onion_model():
         url = f"https://drive.google.com/uc?id={FILE_ID}"
         gdown.download(url, WEIGHTS_PATH, quiet=False)
 
-    # Inisialisasi arsitektur MobileNetV2
-    model = models.mobilenet_v2()
-    model.classifier[1] = nn.Linear(model.classifier[1].in_features, num_classes)
+    # Inisialisasi arsitektur DenseNet121
+    model = models.densenet121(weights=None)
+    model.classifier = nn.Linear(model.classifier.in_features, num_classes)
     
     if os.path.exists(WEIGHTS_PATH):
         model.load_state_dict(torch.load(WEIGHTS_PATH, map_location=device))
@@ -53,9 +53,9 @@ def load_onion_model():
     model = model.to(device)
     model.eval()
     
-    # Inisialisasi Grad-CAM++
+    # Inisialisasi Grad-CAM++ untuk DenseNet (target layer menggunakan denseblock terakhir)
     from pytorch_grad_cam import GradCAMPlusPlus
-    target_layers = [model.features[-1]]
+    target_layers = [model.features.denseblock4]
     cam = GradCAMPlusPlus(model=model, target_layers=target_layers)
     return model, cam
 
