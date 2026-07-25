@@ -71,12 +71,15 @@ uvicorn==0.49.0
 watchdog==6.0.0
 websockets==16.0
 
+streamlit
 torch
 torchvision
-gdown
 grad-cam
 opencv-python
-Pillow
+pillow
 numpy
-streamlit
-streamlit-image-comparison
+pandas
+matplotlib
+seaborn
+scikit-learn
+gitpython
